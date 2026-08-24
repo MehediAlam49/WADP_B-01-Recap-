@@ -1,0 +1,13 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+  <div class="card" style="width: 18rem;">
+    <img src="{{student.ProfilePicture.url}}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">First Name: {{student.FirstName}}</h5>
+      <h5 class="card-title">Last Name: {{student.LastName}}</h5>
+      <p class="card-text">Department: {{student.Department}}</p>
+      <p class="card-text">City: {{student.City}}</p>
+    </div>
+  </div>
+{% endblock %}

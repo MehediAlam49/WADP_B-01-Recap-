@@ -1,0 +1,38 @@
+{% extends 'master/base.html' %}
+
+
+{% block content %}
+    <h1>Edit Student </h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" value="{{student.FirstName}}" name="fname" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" value="{{student.LastName}}" name="lname" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Deparnment</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" value="{{student.Department}}" name="department" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">City</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" value="{{student.City}}" name="city" aria-describedby="emailHelp" />
+    </div>
+    
+    {% if student.ProfilePicture %}
+        <img src="{{student.ProfilePicture.url}}" width="100px" alt="">
+    {% endif %}
+        
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Profile Picture</label>
+      <input type="file" class="form-control" id="exampleInputEmail1" name="profilePicture" aria-describedby="emailHelp" />
+    </div>
+    
+    
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+{% endblock content %}
+    

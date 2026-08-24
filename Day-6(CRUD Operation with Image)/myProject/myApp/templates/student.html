@@ -1,0 +1,38 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+  <H1 class="text-center mt-3">Student List</H1>
+  <a class="btn btn-primary" href="{% url 'addStudent' %}">Add Student</a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">City</th>
+        <th scope="col">Profile Picture</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in student %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{i.FirstName}}</td>
+          <td>{{i.LastName}}</td>
+          <td>{{i.Department}}</td>
+          <td>{{i.City}}</td>
+          <td><img src="{{i.ProfilePicture.url}}" width="100px" alt="profile"></td>
+          <td>
+            <a class="btn btn-primary" href="{% url 'editStudent' i.id %}">Edit</a>
+            <a class="btn btn-danger" href="{% url 'deleteStudent' i.id %}">Delete</a>
+            <a class="btn btn-info" href="{% url 'viewStudent' i.id %}">View</a>
+          </td>
+          
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
