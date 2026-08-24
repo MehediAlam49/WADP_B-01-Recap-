@@ -1,0 +1,14 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+<h2>Student View</h2>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Name: {{student.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Address: {{student.address}}</h6>
+      <p class="card-text">Age: {{student.age}}</p>
+      <p class="card-text">Phone: {{student.phone}}</p>
+      
+    </div>
+  </div>
+{% endblock %}
