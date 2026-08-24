@@ -1,0 +1,42 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="text-center my-3">Product List</h2>
+    <a class="btn btn-primary" href="{% url 'addProduct' %}">Add Product</a>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product Price</th>
+          <th scope="col">Product Description</th>
+          <th scope="col">Product Quantity</th>
+          <th scope="col">Product Image</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{product.product_name}}</td>
+            <td>{{product.product_price}}</td>
+            <td>{{product.product_description}}</td>
+            <td>{{product.product_qty}}</td>
+            <td>
+                <img src="{{product.product_img.url}}" width="100px" alt="product">
+            </td>
+
+            <td>
+                <a class="btn btn-primary" href="{% url 'editProduct' product.id %}">Edit</a>
+                <a class="btn btn-danger" href="{% url 'deleteProduct' product.id %}">Delete</a>
+            </td>
+            
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
