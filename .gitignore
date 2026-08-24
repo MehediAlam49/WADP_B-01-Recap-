@@ -1,0 +1,83 @@
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==============================
+# Virtual Environments
+# ==============================
+env/
+venv/
+myenv/
+myEnv/
+.venv/
+
+# ==============================
+# Environment Variables (Secrets)
+# ==============================
+.env
+.env.*
+
+# ==============================
+# Django Core Files
+# ==============================
+*.log
+db.sqlite3
+db.sqlite3-journal
+
+# ==============================
+# Static & Media Files
+# ==============================
+# Collected static files (after collectstatic)
+staticfiles/
+
+# User uploaded media (images, resumes, etc.)
+media/
+
+# If you keep app-level static folders tracked, DO NOT ignore:
+# myapp/static/  <-- keep this
+
+# ==============================
+# Migrations (optional rule)
+# ==============================
+# Keep migrations except __init__.py
+#**/migrations/*
+#!**/migrations/__init__.py
+
+# ==============================
+# IDE / Editor
+# ==============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==============================
+# OS Files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Testing / Coverage
+# ==============================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ==============================
+# Package / Build
+# ==============================
+*.egg-info/
+dist/
+build/
+
+# ==============================
+# Large / Unnecessary Files
+# ==============================
+*.mp4
+*.zip
+*.exe
+*.rar
