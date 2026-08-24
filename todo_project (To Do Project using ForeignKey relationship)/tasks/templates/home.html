@@ -1,0 +1,8 @@
+{% extends 'master/base.html' %}
+
+
+{% block body %}
+    <h1>Welcome {{request.user.full_name}}</h1>
+    <h4>Email:  {{request.user.email}}</h4>
+{% endblock body %}
+    

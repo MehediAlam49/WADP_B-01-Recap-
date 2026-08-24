@@ -1,0 +1,43 @@
+{% extends 'master/base.html' %}
+
+
+{% block body %}
+    <div class="container">
+        <h2 class="text-center my-3">Task List</h2>
+        <a class="btn btn-primary" href="{% url 'addTask' %}">Add Task</a>
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for task in task_data %}
+        <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{task.Title}}</td>
+      <td>{{task.Description}}</td>
+      <td>{{task.Status}}</td>
+      <td>{{task.Due_date}}</td>
+      <td>{{task.Created_at}}</td>
+      <td>
+        <a class="btn btn-primary" href="{% url 'editTask' task.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'deleteTask' task.id %}">Delete</a>
+      </td>
+      
+    </tr>
+    {% endfor %}
+        
+    
+  </tbody>
+</table>
+    </div>
+{% endblock body %}
+    
