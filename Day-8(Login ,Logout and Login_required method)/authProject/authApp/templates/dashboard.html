@@ -1,0 +1,40 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card border-0">
+        <div class="card-header">
+          <h4>Profile Information</h4>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <strong>First Name:</strong>
+            <span>{{ user.first_name }}</span>
+          </div>
+          <div class="mb-3">
+            <strong>Last Name:</strong>
+            <span>{{ user.last_name }}</span>
+          </div>
+          <div class="mb-3">
+            <strong>email:</strong>
+            <span>{{ user.email }}</span>
+          </div>
+          <div class="mb-3">
+            <strong>Education</strong>
+            <span>{{ user.Education }}</span>
+          </div>
+          <div class="mb-3">
+            <strong>User Type:</strong>
+            <span>{{ user.UserType }}</span>
+          </div>
+          <div class="mb-3">
+            <strong>Gender:</strong>
+            <span>{{ user.Gender }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'master/base.html' %}
+
+{% block content %}
+<h1>Register Page</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="fname" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="lname" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Username</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">User Type</label>
+      <select class="form-select" name="userType" aria-label="Default select example">
+        <option value="Teacher">Teacher</option>
+        <option value="Student">Student</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Education</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="education" aria-describedby="emailHelp" />
+    </div>
+    
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Gender</label>
+      <select class="form-select" name="gender" aria-label="Default select example">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" id="exampleInputPassword1" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" name="conf_password" id="exampleInputPassword1" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Signup</button>
+    <a href="{% url 'signin' %}">Already have an account?</a>
+  </form>
+{% endblock %}
