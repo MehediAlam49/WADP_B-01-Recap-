@@ -51,6 +51,10 @@ def signin(request):
 def dashboard(request):
     return render(request, 'dashboard.html')
 
+@login_required
+def contacts(request):
+    return render(request, 'contacts.html')
+
 def logout_page(request):
     logout(request)
     return redirect('signin')
