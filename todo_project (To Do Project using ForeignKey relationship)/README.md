@@ -15,6 +15,7 @@ A Django task-management application for authenticated users who need a simple w
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
 - [Django Template Setup](#django-template-setup)
+- [Pages and Tools](#pages-and-tools)
 - [Context Data](#context-data)
 - [Navigation Page](#navigation-page)
 - [Usage](#usage)
@@ -133,6 +134,295 @@ The shared base template includes the navigation menu and defines the common HTM
 ```
 
 Templates are stored in `tasks/templates/`, and Django discovers them through `APP_DIRS=True`.
+
+[Back to Contents](#contents)
+
+## Pages and Tools
+
+Each page is connected through a named URL in `tasks/urls.py`. The snippets below show the route, view responsibility, and the main template or tool used by that page.
+
+### 1. Registration Page
+
+**Route:** `/` (`register_page`)
+
+Collects account details, validates that both passwords match, creates a `CustomUserModel`, and redirects to login:
+
+```python
+path('', register_page, name='register_page')
+```
+
+The form submits the expected field names and protects the POST request with a CSRF token:
+
+```html
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="full_name" />
+  <input type="text" name="username" />
+  <input type="email" name="email" />
+  <input type="password" name="password" />
+  <input type="password" name="conf_password" />
+  <button type="submit">Submit</button>
+</form>
+```
+
+### 2. Login Page
+
+**Route:** `/login-page/` (`login_page`)
+
+Authenticates the submitted username and password, starts a session with `login()`, and redirects valid users to home:
+
+```python
+path('login-page/', login_page, name='login_page')
+user = authenticate(request, username=username, password=password)
+if user:
+		login(request, user)
+		return redirect('home')
+```
+
+The page posts the credentials to its own route:
+
+```html
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="username" />
+  <input type="password" name="password" />
+  <button type="submit">Login</button>
+</form>
+```
+
+### 3. Logout Page
+
+**Route:** `/logout-page/` (`logout_page`)
+
+Ends the current Django session and returns the user to login:
+
+```python
+path('logout-page/', logout_page, name='logout_page')
+
+def logout_page(request):
+		logout(request)
+		return redirect('login_page')
+```
+
+The shared navigation invokes it by URL name:
+
+```html
+<a href="{% url 'logout_page' %}">Logout</a>
+```
+
+### 4. Home Page
+
+**Route:** `/home/` (`home`)
+
+Renders the signed-in user’s basic profile information from Django’s `request.user` context object:
+
+```python
+path('home/', home, name='home')
+return render(request, 'home.html')
+```
+
+```html
+<h1>Welcome {{ request.user.full_name }}</h1>
+<h4>Email: {{ request.user.email }}</h4>
+```
+
+### 5. Task List Page
+
+**Route:** `/task-list/` (`taskList`)
+
+Queries only tasks owned by the current user and sends them to `taskList.html` as `task_data`:
+
+```python
+path('task-list/', taskList, name='taskList')
+task_data = TaskModel.objects.filter(Created_by=request.user)
+return render(request, 'taskList.html', {'task_data': task_data})
+```
+
+```html
+{% for task in task_data %}
+<tr>
+  <td>{{ task.Title }}</td>
+  <td>{{ task.Description }}</td>
+  <td>{{ task.Status }}</td>
+  <td>{{ task.Due_date }}</td>
+</tr>
+{% endfor %}
+```
+
+### 6. Add Task Page
+
+**Route:** `/add-task/` (`addTask`)
+
+Displays an empty `TaskForm` on GET. On POST, it validates the form, assigns the current user, saves the task, and returns to the list:
+
+```python
+path('add-task/', addTask, name='addTask')
+
+form_data = TaskForm(request.POST)
+if form_data.is_valid():
+		task = form_data.save(commit=False)
+		task.Created_by = request.user
+		task.save()
+		return redirect('taskList')
+```
+
+The shared form template receives its page-specific labels through context:
+
+```python
+context = {
+		'form_data': TaskForm(),
+		'form_heading': 'Add task form',
+		'form_btn': 'Add task',
+}
+```
+
+### 7. Edit Task Page
+
+**Route:** `/edit-task/<task-id>` (`editTask`)
+
+Loads a task by ID, binds it to `TaskForm` with `instance=task_data`, and saves the edited values:
+
+```python
+path('edit-task/<str:p_id>', editTask, name='editTask')
+task_data = TaskModel.objects.get(id=p_id)
+form_data = TaskForm(request.POST, instance=task_data)
+```
+
+Link to the page with the task’s primary key:
+
+```html
+<a href="{% url 'editTask' task.id %}">Edit</a>
+```
+
+### 8. Delete Task Tool
+
+**Route:** `/delete-task/<task-id>` (`deleteTask`)
+
+Retrieves the selected task, deletes it, and redirects to the task list:
+
+```python
+path('delete-task/<str:p_id>', deleteTask, name='deleteTask')
+
+task_data = TaskModel.objects.get(id=p_id)
+task_data.delete()
+return redirect('taskList')
+```
+
+```html
+<a href="{% url 'deleteTask' task.id %}">Delete</a>
+```
+
+### 9. Admin Page
+
+**Route:** `/admin/`
+
+Create an administrator and open Django’s built-in admin interface:
+
+```bash
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+Visit `http://127.0.0.1:8000/admin/` and sign in with the superuser account.
+
+### 10. Base Template Tool
+
+**File:** `tasks/templates/master/base.html`
+
+Provides the shared HTML document, Bootstrap CDN assets, navigation include, and `body` block:
+
+```html
+{% include 'master/nav.html' %} {% block body %} {% endblock body %}
+```
+
+Every page reuses it with template inheritance:
+
+```html
+{% extends 'master/base.html' %}
+```
+
+### 11. Navigation Include Tool
+
+**File:** `tasks/templates/master/nav.html`
+
+Centralizes links to the named routes so all pages use the same menu:
+
+```html
+<a class="nav-link" href="{% url 'home' %}">Home</a>
+<a class="nav-link" href="{% url 'taskList' %}">Task List</a>
+<a class="nav-link" href="{% url 'login_page' %}">Login</a>
+<a class="nav-link" href="{% url 'register_page' %}">Signin</a>
+<a class="nav-link" href="{% url 'logout_page' %}">Logout</a>
+```
+
+### 12. Django Forms Tool
+
+**File:** `tasks/forms.py`
+
+`TaskForm` is a `ModelForm` generated from `TaskModel`. The creator is excluded because the view assigns it from the authenticated session:
+
+```python
+class TaskForm(forms.ModelForm):
+		class Meta:
+				model = TaskModel
+				fields = '__all__'
+				exclude = ['Created_by']
+```
+
+The due-date field uses a browser date picker:
+
+```python
+'Due_date': forms.DateInput(
+		attrs={'class': 'form-control', 'type': 'date'}
+)
+```
+
+### 13. Crispy Forms Tool
+
+Load Crispy Forms in the shared form template and render the bound form with Bootstrap 5 markup:
+
+```html
+{% load crispy_forms_tags %} {{ form_data|crispy }}
+```
+
+The required settings are:
+
+```python
+INSTALLED_APPS = [
+		'crispy_forms',
+		'crispy_bootstrap5',
+]
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+```
+
+### 14. Database and Migration Tools
+
+The project uses SQLite and Django migrations to store users and tasks:
+
+```bash
+python manage.py makemigrations tasks
+python manage.py migrate
+```
+
+The task-to-user relationship is defined with a foreign key:
+
+```python
+Created_by = models.ForeignKey(
+		CustomUserModel,
+		on_delete=models.CASCADE,
+		null=True,
+)
+```
+
+### 15. Development Server Tool
+
+Start Django’s local development server from the directory containing `manage.py`:
+
+```bash
+cd "todo_project (To Do Project using ForeignKey relationship)"
+python manage.py runserver
+```
 
 [Back to Contents](#contents)
 
