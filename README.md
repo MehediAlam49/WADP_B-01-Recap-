@@ -1,395 +1,192 @@
-# 🚀 Web Application Development with Python
+# Web Application Development with Python
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Django-6.1-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django">
-  <img src="https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
-  <img src="https://img.shields.io/badge/Git-GitHub-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
-  <img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
-</p>
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-6.1-092E20?style=for-the-badge&logo=django&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-<p align="center">
-  <strong>Web Application Development with Python</strong>
-</p>
+A class-wise collection of Django projects created while learning web application development with Python. The repository progresses from Django fundamentals to CRUD applications, image uploads, authentication, relationships, ModelForms, and Crispy Forms.
 
-<p align="center">
-  A practical, class-wise repository containing Django projects, CRUD operations,
-  authentication systems, forms, image handling, database relationships,
-  and real-world web application development practice.
-</p>
+## Contents
 
----
+- [About the Repository](#about-the-repository)
+- [What I Am Learning](#what-i-am-learning)
+- [Projects](#projects)
+- [Technologies](#technologies)
+- [Getting Started](#getting-started)
+- [Running a Project](#running-a-project)
+- [Project Structure](#project-structure)
+- [Learning Progression](#learning-progression)
 
-# 📖 Context
+## About the Repository
 
-This repository contains my learning journey and practical work from the **Web Application Development with Python** course.
+This repository contains practical exercises and projects from the Web Application Development with Python course. Each project is kept in its own directory with its own `manage.py` file, settings module, application code, templates, migrations, and SQLite database where applicable.
 
-The repository is organized class-wise and project-wise so that each topic can be studied independently while keeping the complete development journey connected.
+The projects are intentionally organized by class or topic so that each stage can be opened and run independently.
 
-The main focus of this repository is **Python-based web application development using Django**.
+## What I Am Learning
 
-Throughout the classes and projects, the repository covers:
+- Creating Django projects and applications
+- Configuring a virtual environment
+- Designing models and using the Django ORM
+- Running migrations and managing SQLite databases
+- Registering models in Django Admin
+- Connecting URLs, views, templates, and forms
+- Building Create, Read, Update, and Delete workflows
+- Uploading and managing images with `ImageField`
+- Creating a custom user model with `AbstractUser`
+- Implementing registration, login, logout, and protected pages
+- Building ModelForms and validating submitted data
+- Customizing form widgets
+- Rendering forms with Crispy Forms and Bootstrap 5
+- Creating ForeignKey relationships
+- Filtering data for the authenticated user
 
-- Python and Django development environment setup
-- Django project and application structure
-- Models and database operations
-- Django Admin
-- URL routing
-- Views
-- Templates
-- CRUD operations
-- HTML form handling
-- Image upload and management
-- Custom user model
-- User registration and authentication
-- Login and logout
-- Protected pages using `login_required`
-- Django Model Forms
-- Crispy Forms
-- Bootstrap 5 form rendering
-- ForeignKey relationships
-- User-specific data filtering
-- Practical web application projects
+## Projects
 
----
+| Project                                                                                                                                                                                                                                                       | Main topics                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [`myProject(Django installation. Environment and project create, Model, admin, views, urls, and Read Data)`](myProject%28Django%20installation.%20Environment%20and%20project%20create%2C%20Model%2C%20admin%2C%20views%2C%20urls%2C%20and%20Read%20Data%29/) | Django setup, models, Admin, views, URLs, templates, and reading database data |
+| [`project1(CRUD Operation using HTML Form)`](project1%28CRUD%20Operation%20using%20HTML%20Form%29/)                                                                                                                                                           | CRUD operations using HTML forms and POST requests                             |
+| [`Day-6(CRUD Operation with Image)`](Day-6%28CRUD%20Operation%20with%20Image%29/)                                                                                                                                                                             | CRUD operations, media files, and image uploads                                |
+| [`Day-7(Django Signup operation using Abstract User)`](Day-7%28Django%20Signup%20operation%20using%20Abstract%20User%29/)                                                                                                                                     | Custom user model and user registration                                        |
+| [`Day-8(Login ,Logout and Login_required method)`](Day-8%28Login%20%2CLogout%20and%20Login_required%20method%29/)                                                                                                                                             | Login, logout, authentication, and protected views                             |
+| [`todo_project (To Do Project using ForeignKey relationship)`](todo_project%20%28To%20Do%20Project%20using%20ForeignKey%20relationship%29/)                                                                                                                   | Todo application, tasks, users, and ForeignKey relationships                   |
+| [`Day-10(Crud Operation using Django Form)`](Day-10%28Crud%20Operation%20using%20Django%20Form%29/)                                                                                                                                                           | CRUD operations with Django ModelForms and file uploads                        |
+| [`Day-11 (Crispy form and widgets)`](Day-11%20%28Crispy%20form%20and%20widgets%29/)                                                                                                                                                                           | Crispy Forms, Bootstrap 5, and custom widgets                                  |
 
-# 🎯 Learning Objectives
+## Technologies
 
-The purpose of this repository is to build a strong practical foundation in Django web application development.
+| Technology                  | Purpose                                  |
+| --------------------------- | ---------------------------------------- |
+| Python 3.x                  | Programming language                     |
+| Django 6.1                  | Web framework                            |
+| SQLite                      | Local database                           |
+| Bootstrap 5                 | User interface styling                   |
+| Django Forms and ModelForms | Form handling and validation             |
+| django-crispy-forms         | Form rendering                           |
+| crispy-bootstrap5           | Bootstrap 5 integration for Crispy Forms |
+| Pillow                      | Image processing and uploads             |
+| Git and GitHub              | Version control and repository hosting   |
 
-By working through these classes and projects, I am learning how to:
+## Getting Started
 
-- Understand Django project architecture
-- Create Django projects and applications
-- Configure Django environments
-- Design database models
-- Perform database operations using Django ORM
-- Register and manage models through Django Admin
-- Create URL patterns
-- Develop Django views
-- Render dynamic data using templates
-- Process HTML form submissions
-- Implement Create, Read, Update and Delete operations
-- Upload and manage images
-- Build custom user models
-- Implement user registration
-- Implement login and logout functionality
-- Protect pages using authentication
-- Build reusable Django forms
-- Use Django ModelForm
-- Customize form widgets
-- Integrate Crispy Forms
-- Use Bootstrap 5 with Django forms
-- Create relationships between database models
-- Build practical Django applications
+### 1. Clone the repository
 
----
+```bash
+git clone <repository-url>
+cd WADP_B-01-Recap-
+```
 
-# 🛠️ Technologies & Tools
+### 2. Create and activate a virtual environment
 
-| Technology / Tool | Purpose |
-|---|---|
-| 🐍 Python | Programming Language |
-| 🚀 Django 6.1 | Web Framework |
-| 🗄️ SQLite | Database |
-| 🎨 Bootstrap 5 | Frontend UI |
-| 📝 Django Forms | Form Handling |
-| 🧩 Django ModelForm | Database-backed Forms |
-| ✨ django-crispy-forms | Form Rendering |
-| 🎨 crispy-bootstrap5 | Bootstrap 5 Integration |
-| 🖼️ Pillow | Image Processing |
-| 🔀 Git | Version Control |
-| 🐙 GitHub | Repository Hosting |
-| 💻 VS Code | Development Environment |
+On Windows PowerShell:
 
----
+```powershell
+python -m venv env
+.\env\Scripts\Activate.ps1
+```
 
-# 📚 Course Contents
+On macOS or Linux:
 
-The current repository is organized into the following major learning stages.
+```bash
+python3 -m venv env
+source env/bin/activate
+```
 
-## 1. 🏗️ Django Fundamentals
+### 3. Install dependencies
 
-- Django installation
-- Virtual environment
-- Django project creation
-- Django application creation
-- Project structure
-- Models
-- Database
-- Django Admin
-- Views
-- URLs
-- Templates
-- Reading data from database
+```bash
+pip install -r requirements.txt
+```
 
----
+## Running a Project
 
-## 2. 📝 HTML Form Based CRUD
+Move into the directory that contains the project you want to run. For projects nested inside a class directory, move into the inner project directory first.
 
-- HTML form handling
-- POST request
-- GET request
-- Creating database records
-- Reading database records
-- Updating records
-- Deleting records
-- Student management
-- Teacher management
+Example: run the todo project from the repository root:
 
----
+```bash
+cd "todo_project (To Do Project using ForeignKey relationship)"
+python manage.py migrate
+python manage.py runserver
+```
 
-## 3. 🖼️ CRUD with Image Upload
+Example: run the Day 11 project:
 
-- ImageField
-- File upload
-- `request.FILES`
-- Media files
-- Profile image
-- Create operation
-- Read operation
-- Update operation
-- Delete operation
+```bash
+cd "Day-11 (Crispy form and widgets)/formProject"
+python manage.py migrate
+python manage.py runserver
+```
 
----
+Open `http://127.0.0.1:8000/` in a browser. Stop the development server with `Ctrl+C`.
 
-## 4. 👤 Custom User & Signup
+To create an administrator account for a project, run this from the same directory as that project's `manage.py`:
 
-- Django `AbstractUser`
-- Custom user model
-- User type
-- Gender
-- Education information
-- User registration
-- Password confirmation
-- Custom authentication model configuration
+```bash
+python manage.py createsuperuser
+```
 
----
+Then visit `http://127.0.0.1:8000/admin/`.
 
-## 5. 🔐 Authentication
+## Project Structure
 
-- User authentication
-- Login
-- Logout
-- `authenticate()`
-- `login()`
-- `logout()`
-- `login_required`
-- Protected dashboard
-
----
-
-## 6. 🔗 Database Relationships & Todo Application
-
-- Custom User Model
-- Task Model
-- ForeignKey relationship
-- User-specific tasks
-- Task status
-- Due date
-- Created date
-- Create Task
-- Edit Task
-- Delete Task
-- Task listing
-- User registration
-- User login/logout
-
----
-
-## 7. 🧩 Django ModelForm
-
-- Django Forms
-- ModelForm
-- Form validation
-- Form rendering
-- Create operation using ModelForm
-- Update operation using ModelForm
-- Delete operation
-- File upload through ModelForm
-
----
-
-## 8. ✨ Crispy Forms & Widgets
-
-- Django Crispy Forms
-- Crispy Bootstrap 5
-- Form rendering
-- Bootstrap 5 integration
-- Form widgets
-- Custom form presentation
-
----
-
-# 📂 Repository Structure
-
-The repository currently follows a practical class/project-based structure:
+The repository uses a class-wise layout. A typical Django project looks like this:
 
 ```text
-WADP_B-01/
-│
-├── README.md
-│
-├── requirements.txt
-│
-├── .gitignore
-│
-├── myProject
-│   (Django installation. Environment and project create,
-│    Model, admin, views, urls, and Read Data)/
-│   │
-│   ├── manage.py
-│   ├── db.sqlite3
-│   │
-│   ├── myProject/
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   ├── asgi.py
-│   │   └── wsgi.py
-│   │
-│   └── myApp/
-│       ├── models.py
-│       ├── views.py
-│       ├── urls.py
-│       ├── admin.py
-│       ├── migrations/
-│       └── templates/
-│
-├── project1
-│   (CRUD Operation using HTML Form)/
-│   │
-│   ├── manage.py
-│   ├── db.sqlite3
-│   │
-│   ├── project1/
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   ├── asgi.py
-│   │   └── wsgi.py
-│   │
-│   └── projectApp/
-│       ├── models.py
-│       ├── views.py
-│       ├── urls.py
-│       ├── admin.py
-│       ├── migrations/
-│       └── templates/
-│
-├── Day-6(CRUD Operation with Image)/
-│   │
-│   └── myProject/
-│       ├── manage.py
-│       ├── db.sqlite3
-│       │
-│       ├── myProject/
-│       │   ├── settings.py
-│       │   ├── urls.py
-│       │   ├── asgi.py
-│       │   └── wsgi.py
-│       │
-│       └── myApp/
-│           ├── models.py
-│           ├── views.py
-│           ├── urls.py
-│           ├── admin.py
-│           ├── migrations/
-│           └── templates/
-│
-├── Day-7(Django Signup operation using Abstract User)/
-│   │
-│   └── authProject/
-│       ├── manage.py
-│       │
-│       ├── authProject/
-│       │   ├── settings.py
-│       │   ├── urls.py
-│       │   ├── asgi.py
-│       │   └── wsgi.py
-│       │
-│       └── authApp/
-│           ├── models.py
-│           ├── views.py
-│           ├── urls.py
-│           ├── admin.py
-│           ├── migrations/
-│           └── templates/
-│
-├── Day-8(Login ,Logout and Login_required method)/
-│   │
-│   └── authProject/
-│       ├── manage.py
-│       │
-│       ├── authProject/
-│       │   ├── settings.py
-│       │   ├── urls.py
-│       │   ├── asgi.py
-│       │   └── wsgi.py
-│       │
-│       └── authApp/
-│           ├── models.py
-│           ├── views.py
-│           ├── urls.py
-│           ├── admin.py
-│           ├── migrations/
-│           └── templates/
-│
-├── todo_project
-│   (To Do Project using ForeignKey relationship)/
-│   │
-│   ├── manage.py
-│   ├── db.sqlite3
-│   │
-│   ├── todo_project/
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   ├── asgi.py
-│   │   └── wsgi.py
-│   │
-│   └── tasks/
-│       ├── models.py
-│       ├── views.py
-│       ├── forms.py
-│       ├── urls.py
-│       ├── admin.py
-│       ├── migrations/
-│       └── templates/
-│
-├── Day-10(Crud Operation using Django Form)/
-│   │
-│   └── formProject/
-│       ├── manage.py
-│       │
-│       ├── formProject/
-│       │   ├── settings.py
-│       │   ├── urls.py
-│       │   ├── asgi.py
-│       │   └── wsgi.py
-│       │
-│       └── formApp/
-│           ├── models.py
-│           ├── views.py
-│           ├── forms.py
-│           ├── urls.py
-│           ├── admin.py
-│           ├── migrations/
-│           └── templates/
-│
-└── Day-11 (Crispy form and widgets)/
-    │
-    └── formProject/
-        ├── manage.py
-        │
-        ├── formProject/
-        │   ├── settings.py
-        │   ├── urls.py
-        │   ├── asgi.py
-        │   └── wsgi.py
-        │
-        └── formApp/
-            ├── models.py
-            ├── views.py
-            ├── forms.py
-            ├── urls.py
-            ├── admin.py
-            ├── migrations/
-            └── templates/
+project-directory/
+├── manage.py
+├── db.sqlite3
+├── project_package/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+└── application/
+    ├── models.py
+    ├── views.py
+    ├── urls.py
+    ├── forms.py
+    ├── admin.py
+    ├── migrations/
+    └── templates/
+```
+
+Important repository directories include:
+
+```text
+README.md
+requirements.txt
+env/
+myProject(...)/
+project1(...)/
+Day-6(CRUD Operation with Image)/
+Day-7(Django Signup operation using Abstract User)/
+Day-8(Login ,Logout and Login_required method)/
+todo_project (...)/
+Day-10(Crud Operation using Django Form)/
+Day-11 (Crispy form and widgets)/
+```
+
+## Learning Progression
+
+1. **Django fundamentals:** project setup, applications, models, Admin, URLs, views, templates, and database queries.
+2. **HTML form CRUD:** creating, reading, updating, and deleting records through HTML forms.
+3. **Image CRUD:** handling uploaded files, media settings, and profile images.
+4. **Custom users:** extending Django authentication with `AbstractUser`.
+5. **Authentication:** registration, login, logout, `authenticate()`, and `login_required`.
+6. **Relationships:** connecting users and tasks with `ForeignKey` and filtering user-specific data.
+7. **ModelForms:** validating and simplifying database-backed form workflows.
+8. **Crispy Forms:** improving form presentation with widgets and Bootstrap 5.
+
+## Notes
+
+- Run Django commands from the directory containing the selected project's `manage.py` file.
+- The projects use SQLite for local development.
+- Uploaded files are stored in project media directories where image-upload functionality is implemented.
+- The included databases are development data for the course exercises.
+
+## License
+
+This repository is maintained for learning and educational practice.
